@@ -15,6 +15,8 @@
 		3319AD79226BA17600CE24CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3319AD78226BA17600CE24CE /* Assets.xcassets */; };
 		3319AD7C226BA17600CE24CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3319AD7A226BA17600CE24CE /* LaunchScreen.storyboard */; };
 		3319AD87226BA17600CE24CE /* MinesweeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319AD86226BA17600CE24CE /* MinesweeperTests.swift */; };
+		3319AD92226BA59B00CE24CE /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319AD91226BA59B00CE24CE /* GameManager.swift */; };
+		3319AD94226BBF0700CE24CE /* CellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319AD93226BBF0700CE24CE /* CellNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		3319AD82226BA17600CE24CE /* MinesweeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MinesweeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3319AD86226BA17600CE24CE /* MinesweeperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperTests.swift; sourceTree = "<group>"; };
 		3319AD88226BA17600CE24CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3319AD91226BA59B00CE24CE /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		3319AD93226BBF0700CE24CE /* CellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				3319AD6B226BA17400CE24CE /* AppDelegate.swift */,
 				3319AD6D226BA17400CE24CE /* GameScene.sks */,
 				3319AD71226BA17400CE24CE /* GameScene.swift */,
+				3319AD93226BBF0700CE24CE /* CellNode.swift */,
+				3319AD91226BA59B00CE24CE /* GameManager.swift */,
 				3319AD73226BA17400CE24CE /* GameViewController.swift */,
 				3319AD75226BA17400CE24CE /* Main.storyboard */,
 				3319AD78226BA17600CE24CE /* Assets.xcassets */,
@@ -204,7 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3319AD94226BBF0700CE24CE /* CellNode.swift in Sources */,
 				3319AD72226BA17400CE24CE /* GameScene.swift in Sources */,
+				3319AD92226BA59B00CE24CE /* GameManager.swift in Sources */,
 				3319AD74226BA17400CE24CE /* GameViewController.swift in Sources */,
 				3319AD6C226BA17400CE24CE /* AppDelegate.swift in Sources */,
 			);
