@@ -17,6 +17,17 @@
 		3319AD87226BA17600CE24CE /* MinesweeperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319AD86226BA17600CE24CE /* MinesweeperTests.swift */; };
 		3319AD92226BA59B00CE24CE /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319AD91226BA59B00CE24CE /* GameManager.swift */; };
 		3319AD94226BBF0700CE24CE /* CellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319AD93226BBF0700CE24CE /* CellNode.swift */; };
+		3331DDD322815075003F85F4 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDCA22815074003F85F4 /* 1.png */; };
+		3331DDD422815075003F85F4 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDCB22815074003F85F4 /* 5.png */; };
+		3331DDD522815075003F85F4 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDCC22815074003F85F4 /* 4.png */; };
+		3331DDD722815075003F85F4 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDCE22815074003F85F4 /* 7.png */; };
+		3331DDD822815075003F85F4 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDCF22815074003F85F4 /* 8.png */; };
+		3331DDD922815075003F85F4 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDD022815074003F85F4 /* 3.png */; };
+		3331DDDA22815075003F85F4 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDD122815074003F85F4 /* 2.png */; };
+		3331DDDB22815075003F85F4 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDD222815075003F85F4 /* 6.png */; };
+		3331DDDE2281549D003F85F4 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDDD2281549D003F85F4 /* 0.png */; };
+		3331DDE12281E936003F85F4 /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDDF2281E936003F85F4 /* bomb.png */; };
+		3331DDE22281E936003F85F4 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 3331DDE02281E936003F85F4 /* flag.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +55,17 @@
 		3319AD88226BA17600CE24CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3319AD91226BA59B00CE24CE /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		3319AD93226BBF0700CE24CE /* CellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellNode.swift; sourceTree = "<group>"; };
+		3331DDCA22815074003F85F4 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		3331DDCB22815074003F85F4 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		3331DDCC22815074003F85F4 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		3331DDCE22815074003F85F4 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		3331DDCF22815074003F85F4 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		3331DDD022815074003F85F4 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		3331DDD122815074003F85F4 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		3331DDD222815075003F85F4 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		3331DDDD2281549D003F85F4 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 0.png; path = ../../../../../0.png; sourceTree = "<group>"; };
+		3331DDDF2281E936003F85F4 /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb.png; sourceTree = "<group>"; };
+		3331DDE02281E936003F85F4 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +116,17 @@
 				3319AD75226BA17400CE24CE /* Main.storyboard */,
 				3319AD78226BA17600CE24CE /* Assets.xcassets */,
 				3319AD7A226BA17600CE24CE /* LaunchScreen.storyboard */,
+				3331DDDD2281549D003F85F4 /* 0.png */,
+				3331DDCA22815074003F85F4 /* 1.png */,
+				3331DDD122815074003F85F4 /* 2.png */,
+				3331DDD022815074003F85F4 /* 3.png */,
+				3331DDCC22815074003F85F4 /* 4.png */,
+				3331DDCB22815074003F85F4 /* 5.png */,
+				3331DDD222815075003F85F4 /* 6.png */,
+				3331DDCE22815074003F85F4 /* 7.png */,
+				3331DDCF22815074003F85F4 /* 8.png */,
+				3331DDDF2281E936003F85F4 /* bomb.png */,
+				3331DDE02281E936003F85F4 /* flag.png */,
 				3319AD7D226BA17600CE24CE /* Info.plist */,
 			);
 			path = Minesweeper;
@@ -189,10 +222,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3331DDD922815075003F85F4 /* 3.png in Resources */,
+				3331DDD822815075003F85F4 /* 8.png in Resources */,
+				3331DDD722815075003F85F4 /* 7.png in Resources */,
 				3319AD77226BA17400CE24CE /* Main.storyboard in Resources */,
+				3331DDD522815075003F85F4 /* 4.png in Resources */,
+				3331DDDB22815075003F85F4 /* 6.png in Resources */,
+				3331DDDA22815075003F85F4 /* 2.png in Resources */,
+				3331DDE12281E936003F85F4 /* bomb.png in Resources */,
 				3319AD6E226BA17400CE24CE /* GameScene.sks in Resources */,
 				3319AD79226BA17600CE24CE /* Assets.xcassets in Resources */,
+				3331DDD422815075003F85F4 /* 5.png in Resources */,
+				3331DDE22281E936003F85F4 /* flag.png in Resources */,
+				3331DDDE2281549D003F85F4 /* 0.png in Resources */,
 				3319AD7C226BA17600CE24CE /* LaunchScreen.storyboard in Resources */,
+				3331DDD322815075003F85F4 /* 1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KW7CFTG38R;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -397,6 +442,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KW7CFTG38R;
 				INFOPLIST_FILE = Minesweeper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

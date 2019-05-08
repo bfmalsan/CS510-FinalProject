@@ -25,9 +25,18 @@ class GameScene: SKScene {
     
     var minesRemaining:Int = 10
     var isGameOver:Bool = false
+    var flagMode:Bool = false
+    
+    var clickButton: SKShapeNode!
+    var flagButton: SKShapeNode!
+    
+    let numRows = 9
+    let numCols = 9
+    var numberTextures: [SKTexture] = []
    
     
     override func didMove(to view: SKView) {
+        initializeTextures()
         
         initializeMenu()
         
@@ -48,12 +57,38 @@ class GameScene: SKScene {
                 if node.name == "play_button" {
                     startGame()
                 }
+                if node.name == "ClickButton"{
+                    if(flagMode){
+                        flagMode = false
+                        print(flagMode)
+                    }
+                }
+                if node.name == "FlagButton"{
+                    if(!flagMode){
+                        flagMode = true
+                        print(flagMode)
+                    }
+                }
+                
                 if (node.name == "cellNode" && !isGameOver){
                     let clickedNode:CellNode = node as! CellNode
                     clickedNode.isClicked = true
-                    if(clickedNode.isMine){
+                    
+                    if(flagMode && minesRemaining > 0){
+                        clickedNode.isFlagged = true
+                        clickedNode.fillTexture = SKTexture.init(imageNamed: "flag.png")
                         minesRemaining -= 1
-                        currentScore.text = "Mines Remaining: " + String(minesRemaining)
+                        currentScore.text = "Flags Remaining: " + String(minesRemaining)
+                    }
+                    else{
+                        clickedNode.fillTexture = numberTextures[clickedNode.numNeighborsWithMine]
+                    }
+                    
+                    
+                    //print(clickedNode.numNeighborsWithMine)
+                    
+                    if(clickedNode.isMine && !flagMode){
+                        clickedNode.fillTexture = SKTexture.init(imageNamed: "bomb.png")
                         print("BOOOM!!!")
                         GameOver()
                         
@@ -73,9 +108,22 @@ class GameScene: SKScene {
         
         //Show gameboard and score
         gameBG.isHidden = false
+        clickButton.isHidden = false
+        flagButton.isHidden = false
         currentScore.isHidden = false
     }
     
+    private func initializeTextures(){
+        numberTextures.append(SKTexture.init(imageNamed: "0.png"))
+        numberTextures.append(SKTexture.init(imageNamed: "1.png"))
+        numberTextures.append(SKTexture.init(imageNamed: "2.png"))
+        numberTextures.append(SKTexture.init(imageNamed: "3.png"))
+        numberTextures.append(SKTexture.init(imageNamed: "4.png"))
+        numberTextures.append(SKTexture.init(imageNamed: "5.png"))
+        numberTextures.append(SKTexture.init(imageNamed: "6.png"))
+        numberTextures.append(SKTexture.init(imageNamed: "7.png"))
+        numberTextures.append(SKTexture.init(imageNamed: "8.png"))
+    }
     
     private func initializeGameView() {
         //4
@@ -94,17 +142,34 @@ class GameScene: SKScene {
         let rect = CGRect(x: -width / 2, y: -height / 2, width: width, height: height)
         gameBG = SKShapeNode(rect: rect, cornerRadius: 0.02)
         gameBG.fillColor = SKColor.darkGray
-        gameBG.zPosition = 2
+        gameBG.zPosition = 0
         gameBG.isHidden = true
         self.addChild(gameBG)
         //6
         createGameBoard(width: Int(width), height: Int(height))
+        
+        let rect2 = CGRect(x: -120, y: -200, width:70, height:70)
+        clickButton = SKShapeNode(rect: rect2)
+        clickButton.name = "ClickButton"
+        clickButton.fillColor = SKColor.blue
+        clickButton.zPosition = 1
+        clickButton.isHidden = true
+        self.addChild(clickButton)
+        
+        let rect3 = CGRect(x: 80, y: -200, width:70, height:70)
+        flagButton = SKShapeNode(rect: rect3)
+        flagButton.name = "FlagButton"
+        flagButton.fillColor = SKColor.white
+        flagButton.fillTexture = SKTexture.init(imageNamed: "flag.png")
+        flagButton.zPosition = 1
+        flagButton.isHidden = true
+        self.addChild(flagButton)
+        
     }
     
     private func createGameBoard(width: Int, height: Int) {
-        let cellWidth: CGFloat = 40
-        let numRows = 9
-        let numCols = 9
+        let cellWidth: CGFloat = 60
+        
         var x = CGFloat(width / -2) + (cellWidth / 2)
         var y = CGFloat(height / 2) - (cellWidth / 2)
         //loop through rows and columns, create cells
@@ -113,11 +178,12 @@ class GameScene: SKScene {
                 //let cellNode = SKShapeNode(rectOf: CGSize(width: cellWidth, height: cellWidth))
                 let cellNode = createCell(width: cellWidth)
                 
-                cellNode.strokeColor = SKColor.blue
-                cellNode.zPosition = 2
+                cellNode.strokeColor = SKColor.black
+                cellNode.fillColor = SKColor.white
+                cellNode.zPosition = 0
                 cellNode.position = CGPoint(x: x, y: y)
                 cellNode.name = "cellNode" //give the cells a name for touch recognition
-                cellNode.numNeighborsWithMine = 50
+                
                 //add to array of cells -- then add to game board
                 gameArray.append((node: cellNode, x: i, y: j))
                 gameBG.addChild(cellNode)
@@ -131,13 +197,13 @@ class GameScene: SKScene {
         
         //After board is generated...
         //Randomly pick who will be mines or not
-        let numMines = 10
+        let numMines = minesRemaining //set the number of mines we want
         var i=0
         while (i<numMines){
             let posx = Int(arc4random()) % numCols
-            print(posx)
+            //print(posx)
             let posy = Int(arc4random()) % numRows
-            print(posy)
+            //print(posy)
             if(gameArray[posy+(numRows*posx)].node.isMine){
                 continue
             }
@@ -147,9 +213,83 @@ class GameScene: SKScene {
             }
         }
         
+        for cell in gameArray{
+            cell.node.numNeighborsWithMine = countNeighbors(posx: cell.x, posy: cell.y)
+        }
         
-        
+       
     }
+    
+    private func countNeighbors(posx: Int, posy: Int) -> Int{
+        var total = 0
+        //print(posx)
+        //print(posy)
+        
+        //tL
+        if(-1 < posx-1 && -1 < posy-1 ){
+            if(access2D(posx:posx-1,posy:posy-1).isMine){
+                total += 1
+            }
+        }
+        //tM
+        if(-1 < posx-1 ){
+            if(access2D(posx:posx-1,posy:posy).isMine){
+                total += 1
+            }
+        }
+        //tR
+        if(-1 < posx-1 && posy + 1 < numCols ){
+            if(access2D(posx:posx-1,posy:posy + 1).isMine){
+                total += 1
+            }
+        }
+        //R
+        if(posy + 1 < numCols ){
+            if(access2D(posx:posx,posy:posy + 1).isMine){
+                total += 1
+            }
+        }
+        
+        //bR
+        if( posx + 1 < numRows && posy + 1 < numCols ){
+            if(access2D(posx:posx + 1,posy:posy + 1).isMine){
+                total += 1
+            }
+        }
+        
+        //bM
+        if(posx + 1 < numRows){
+            if(access2D(posx:posx + 1,posy:posy).isMine){
+                total += 1
+            }
+        }
+       
+        //bL
+        if(posx + 1 < numRows && -1 < posy - 1 ){
+            if(access2D(posx:posx + 1,posy:posy - 1).isMine){
+                total += 1
+            }
+        }
+        
+        //L
+        if( -1 < posy - 1 ){
+            if(access2D(posx:posx,posy:posy - 1).isMine){
+                total += 1
+            }
+        }
+        
+        return total
+        
+        //let tL = access2D(posx:posx-1,posy:posy-1)
+    }
+    
+    private func access2D(posx: Int, posy: Int) -> CellNode{
+        return gameArray[posy+(numRows*posx)].node
+    }
+    
+    //private func checkMine(posx: Int, posy: Int) -> Bool{
+    //    return access2D(posx:posx,posy:posy).isMine
+    //}
     
     private func createCell(width: CGFloat) -> CellNode{
         let node = CellNode(rectOf: CGSize(width: width, height: width))
@@ -193,6 +333,17 @@ class GameScene: SKScene {
     private func GameOver(){
         isGameOver = true
         currentScore.text = "Game Over!!!"
+        
+        for cell in gameArray{
+            if(cell.node.isMine){
+                cell.node.fillTexture = SKTexture.init(imageNamed: "bomb.png")
+            }
+            else{
+                if(!cell.node.isClicked){
+                    cell.node.fillTexture = numberTextures[cell.node.numNeighborsWithMine]
+                }
+            }
+        }
     }
     
     
